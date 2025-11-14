@@ -31,7 +31,7 @@ This project is designed for portfolio-grade quality and easy deployment.
   1. Frozen EfficientNetB0  
   2. Fine-tuning with low LR  
 
-Model file:  "best_model.keras" in the "model" folder
+Model file:  "best_model.keras" in the "Link Model.txt" file
 
 
 ---
@@ -93,6 +93,14 @@ The frontend will call the backend automatically.
 3. Flask preprocesses (224×224 resizing + normalization)
 4. TensorFlow model predicts
 5. Frontend displays result + confidence
+
+## Screenshots
+<img width="1895" height="1035" alt="Screenshot 2025-11-14 163354" src="https://github.com/user-attachments/assets/e1472f30-11e7-4b38-8ad6-70814c9c1cd1" />
+<img width="1900" height="1035" alt="Screenshot 2025-11-14 163414" src="https://github.com/user-attachments/assets/7228941b-3659-48ab-b734-411c1e68b7a8" />
+<img width="1896" height="1040" alt="Screenshot 2025-11-14 163210" src="https://github.com/user-attachments/assets/19db47ef-b8e8-4a30-a889-54050bb07e8f" />
+<img width="1894" height="1039" alt="Screenshot 2025-11-14 163235" src="https://github.com/user-attachments/assets/ea72945b-c040-458a-9449-a2e7167a7dc5" />
+<img width="1886" height="1040" alt="Screenshot 2025-11-14 163328" src="https://github.com/user-attachments/assets/3c3235cd-0fb5-4ffc-863e-cafff50421a3" />
+<img width="1882" height="1043" alt="Screenshot 2025-11-14 163431" src="https://github.com/user-attachments/assets/4a0d836d-389f-4964-9c26-83634e9ea074" />
 
 # React + Vite
 
