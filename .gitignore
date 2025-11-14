@@ -1,0 +1,73 @@
+########################################
+# GLOBAL
+########################################
+.DS_Store
+*.log
+*.tmp
+*.cache
+.env
+.env.local
+.env.*.local
+
+
+########################################
+# BACKEND (Python / Flask)
+########################################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Model & training artifacts
+*.h5
+*.keras
+*.pb
+*.tflite
+checkpoint/
+checkpoints/
+logs/
+model/
+models/
+
+# Datasets
+dataset/
+datasets/
+data/
+Data/
+Images/
+
+# Jupyter
+.ipynb_checkpoints/
+.ipynb
+
+########################################
+# FRONTEND (React + Vite)
+########################################
+# Node Modules
+node_modules/
+
+# Build Output
+dist/
+build/
+
+# Cache
+*.local
+.vite/
+vite.svg
+*.tsbuildinfo
+
+# Editor folders
+.vscode/
+.idea/
+
+
+########################################
+# OS / Misc
+########################################
+Thumbs.db

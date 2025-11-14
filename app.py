@@ -1,16 +1,24 @@
+import os
+os.environ["KERAS_BACKEND"] = "tensorflow"
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-from tensorflow.keras.models import load_model
+import keras
 from PIL import Image
 import io
-import os
+import tensorflow as tf
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
 
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model", "best_model.keras")
+
 # Load model
-model = load_model('ai_imageclassifier.h5')
+model = keras.models.load_model(
+    MODEL_PATH,
+    compile=False,
+    safe_mode=False
+)
 print("✅ Model loaded successfully!")
 
 @app.route('/')
@@ -19,6 +27,10 @@ def home():
         'status': 'API is running',
         'endpoints': ['/predict']
     })
+
+@app.route('/health')
+def health():
+    return jsonify({'status': 'ok', 'model_loaded': True})
 
 def preprocess_image(file):
     # Convert file to PIL Image
@@ -30,28 +42,29 @@ def preprocess_image(file):
     if pil_image.mode != 'RGB':
         pil_image = pil_image.convert('RGB')
     
-    pil_image = pil_image.resize((32, 32))
+    pil_image = pil_image.resize((224, 224))
     
     # Convert to array and normalize
-    img_array = np.array(pil_image) / 255.0
-    
+    img_array = np.array(pil_image, dtype=np.float32)
+    img_array = tf.keras.applications.efficientnet.preprocess_input(img_array)
+
     # Add batch dimension
     return np.expand_dims(img_array, axis=0)
 
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        if 'image' not in request.files:
+        if 'file' not in request.files:
             return jsonify({'error': 'No image uploaded'}), 400
 
-        file = request.files['image']
+        file = request.files['file']
         
         if file.filename == '':
             return jsonify({'error': 'No image selected'}), 400
 
         # Preprocess and predict
         img_array = preprocess_image(file)
-        pred = model.predict(img_array)
+        pred = model.predict(img_array, verbose=0)
         
         # Ambil nilai prediksi (sigmoid output)
         y_pred = float(pred[0][0])
