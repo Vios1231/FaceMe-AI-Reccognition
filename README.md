@@ -4,8 +4,6 @@ Detect AI-Generated Images with Deep Learning (EfficientNetB0 + Flask API + Reac
 FaceMe AI Recognition is a full-stack machine learning application that detects whether an input image is **AI-generated** or **real**.  
 The model is trained using **EfficientNetB0** and served through a **Flask REST API**, while the UI is built using a modern **React + Vite** frontend.
 
-This project is designed for portfolio-grade quality and easy deployment.
-
 ---
 
 ## 🚀 Features
